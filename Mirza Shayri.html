@@ -1,0 +1,1862 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Mirza Shayri</title>
+
+<style>
+
+/* =========================
+   BASIC
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Georgia, serif;
+    background: #0b0710;
+    color: white;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav {
+    height: 72px;
+    padding: 0 6%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: rgba(15, 8, 20, .96);
+    border-bottom: 1px solid #392640;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 27px;
+    font-style: italic;
+    margin-right: auto;
+}
+
+.nav-links {
+    display: flex;
+    gap: 24px;
+}
+
+.nav-links a {
+    color: #ddd;
+    text-decoration: none;
+    font-family: Arial;
+    cursor: pointer;
+}
+
+.nav-links a:hover {
+    color: #e7b9ff;
+}
+
+.upload-btn {
+    padding: 10px 17px;
+    border: none;
+    border-radius: 25px;
+    background: #e7c4ff;
+    color: #160d1b;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.login-btn {
+    padding: 9px 17px;
+    border: 1px solid #9d7baa;
+    border-radius: 25px;
+    color: white;
+    text-decoration: none;
+    font-family: Arial;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 520px;
+    padding: 100px 10%;
+
+    background:
+        radial-gradient(
+            circle at 75% 35%,
+            rgba(139, 67, 170, .35),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #100918,
+            #1b0d24,
+            #08060c
+        );
+
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    max-width: 750px;
+}
+
+.small-title {
+    color: #c99be2;
+    font-family: Arial;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-size: 13px;
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    font-size: 62px;
+    font-weight: normal;
+    font-style: italic;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: #d9a9f3;
+}
+
+.hero p {
+    max-width: 620px;
+    color: #cfc4d4;
+    font-size: 19px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.search {
+    max-width: 620px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #72547e;
+    border-radius: 30px;
+    background: rgba(255,255,255,.06);
+    overflow: hidden;
+}
+
+.search-icon {
+    font-size: 23px;
+    padding-left: 20px;
+}
+
+.search input {
+    flex: 1;
+    height: 100%;
+    padding: 0 15px;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: white;
+    font-size: 15px;
+}
+
+.search input::placeholder {
+    color: #aaa;
+}
+
+.search button {
+    width: 48px;
+    height: 48px;
+    margin-right: 3px;
+    border: none;
+    border-radius: 50%;
+    background: #e8c6ff;
+    cursor: pointer;
+}
+
+/* =========================
+   QUICK CATEGORIES
+========================= */
+
+.quick {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.quick button {
+    padding: 9px 17px;
+    border: 1px solid #5d4867;
+    border-radius: 22px;
+    background: rgba(255,255,255,.05);
+    color: white;
+    cursor: pointer;
+}
+
+.quick button:hover {
+    background: #36203f;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+main {
+    padding: 60px 6%;
+}
+
+.section-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    margin-bottom: 28px;
+}
+
+.section-heading h2 {
+    font-size: 32px;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.section-heading span {
+    color: #9e8ca5;
+    font-family: Arial;
+    font-size: 13px;
+}
+
+/* =========================
+   SHAYARI GRID
+========================= */
+
+.shayari-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.shayari-card {
+    min-height: 310px;
+    padding: 24px;
+    border: 1px solid #35243d;
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(49, 27, 60, .9),
+            rgba(14, 9, 18, .98)
+        );
+
+    display: flex;
+    flex-direction: column;
+    transition: .3s;
+}
+
+.shayari-card:hover {
+    transform: translateY(-7px);
+    border-color: #8f65a1;
+}
+
+.category-tag {
+    align-self: flex-start;
+    padding: 6px 13px;
+    border-radius: 20px;
+    background: #291832;
+    color: #dcb6ed;
+    font-family: Arial;
+    font-size: 12px;
+}
+
+.shayari-text {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 25px 0;
+    white-space: pre-line;
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.author {
+    color: #a999ae;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+/* CARD ACTIONS */
+
+.card-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.card-actions button {
+    flex: 1;
+    padding: 9px;
+    border: 1px solid #4c3a53;
+    border-radius: 20px;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    font-family: Arial;
+    font-size: 12px;
+}
+
+.card-actions button:hover {
+    background: #35203e;
+}
+
+.delete-btn:hover {
+    background: #8b3030 !important;
+}
+
+/* =========================
+   CATEGORIES
+========================= */
+
+.categories-section {
+    margin-top: 70px;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+}
+
+.category-box {
+    min-height: 130px;
+    padding: 20px;
+    border: 1px solid #35243d;
+    border-radius: 15px;
+    background: #120c17;
+    cursor: pointer;
+    text-align: center;
+    transition: .25s;
+}
+
+.category-box:hover {
+    transform: translateY(-5px);
+    background: #24132c;
+}
+
+.category-icon {
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.category-box h3 {
+    font-family: Arial;
+    font-size: 14px;
+}
+
+/* =========================
+   QUOTE
+========================= */
+
+.quote-section {
+    margin-top: 60px;
+    padding: 55px 30px;
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            120deg,
+            #25132e,
+            #130c18
+        );
+
+    border: 1px solid #4a3153;
+    text-align: center;
+}
+
+.quote-section .quote-mark {
+    font-size: 50px;
+    color: #c89be0;
+}
+
+.quote-section p {
+    max-width: 800px;
+    margin: auto;
+    font-size: 24px;
+    line-height: 1.7;
+    font-style: italic;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    margin-top: 40px;
+    padding: 35px 6%;
+    border-top: 1px solid #302235;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    color: #9e929f;
+    font-family: Arial;
+}
+
+.footer-logo {
+    color: white;
+    font-family: Georgia;
+    font-style: italic;
+}
+
+/* =========================
+   UPLOAD POPUP
+========================= */
+
+.overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(0,0,0,.82);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.upload-box {
+    width: 520px;
+    max-width: 100%;
+    padding: 30px;
+    border-radius: 20px;
+    background: #170d1d;
+    border: 1px solid #684878;
+}
+
+.upload-box h2 {
+    font-size: 30px;
+    font-style: italic;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+.upload-box label {
+    display: block;
+    margin: 14px 0 7px;
+    color: #c9becd;
+    font-family: Arial;
+    font-size: 14px;
+}
+
+.upload-box textarea,
+.upload-box input,
+.upload-box select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #57405f;
+    border-radius: 10px;
+    background: #0c0710;
+    color: white;
+    outline: none;
+}
+
+.upload-box textarea {
+    height: 140px;
+    resize: vertical;
+}
+
+.upload-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.publish,
+.cancel {
+    flex: 1;
+    padding: 13px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.publish {
+    border: none;
+    background: #e6c1fb;
+    color: #160d1b;
+    font-weight: bold;
+}
+
+.cancel {
+    border: 1px solid #674d70;
+    background: transparent;
+    color: white;
+}
+
+/* =========================
+   TOAST
+========================= */
+
+.toast {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    padding: 13px 22px;
+    border-radius: 25px;
+    background: #e6c1fb;
+    color: #160d1b;
+    font-family: Arial;
+    z-index: 3000;
+    transition: .3s;
+}
+
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:900px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .shayari-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+@media(max-width:600px) {
+
+    nav {
+        padding: 0 15px;
+        gap: 7px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .upload-btn,
+    .login-btn {
+        padding: 8px 10px;
+        font-size: 11px;
+    }
+
+    .hero {
+        padding: 70px 25px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    main {
+        padding: 40px 20px;
+    }
+
+    .shayari-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav>
+
+    <div class="logo">
+        🪶 Mirza Shayri
+    </div>
+
+    <div class="nav-links">
+
+        <a onclick="showAll()">
+            Home
+        </a>
+
+        <a onclick="scrollCategories()">
+            Categories
+        </a>
+
+        <a onclick="showAbout()">
+            About
+        </a>
+
+        <a onclick="showFavorites()">
+            ♥ Favorites
+        </a>
+
+    </div>
+
+    <button
+        class="upload-btn"
+        onclick="openUpload()">
+
+        ＋ Upload
+
+    </button>
+
+    <a
+        href="#"
+        class="login-btn">
+
+        Login
+
+    </a>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="small-title">
+            Welcome to
+        </div>
+
+        <h1>
+            <span>Mirza</span> Shayri
+        </h1>
+
+        <p>
+            Where feelings become words,
+            memories become verses,
+            and every heart finds a Shayari.
+        </p>
+
+        <div class="search">
+
+            <div class="search-icon">
+                ⌕
+            </div>
+
+            <input
+                id="searchInput"
+                type="text"
+                placeholder="Search Shayari..."
+                oninput="searchShayari()"
+            >
+
+            <button
+                onclick="searchShayari()">
+
+                →
+                
+            </button>
+
+        </div>
+
+        <div class="quick">
+
+            <button onclick="filterCategory('Love')">
+                💗 Love
+            </button>
+
+            <button onclick="filterCategory('Sad')">
+                ☁ Sad
+            </button>
+
+            <button onclick="filterCategory('Friendship')">
+                👥 Friendship
+            </button>
+
+            <button onclick="filterCategory('Motivational')">
+                ⭐ Motivation
+            </button>
+
+            <button onclick="filterCategory('Life')">
+                🍃 Life
+            </button>
+
+            <button onclick="showAll()">
+                ✨ All
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main>
+
+    <div class="section-heading">
+
+        <h2>
+            Shayari Collection
+        </h2>
+
+        <span>
+            Words from the heart
+        </span>
+
+    </div>
+
+
+    <div
+        class="shayari-grid"
+        id="shayariContainer">
+
+
+        <!-- LOVE -->
+
+        <div
+            class="shayari-card"
+            data-category="Love">
+
+            <div class="category-tag">
+                Love
+            </div>
+
+            <div class="shayari-text">
+
+                Tumse milkar yeh ehsaas hua,
+                zindagi abhi bhi khoobsurat hai.
+
+            </div>
+
+            <div class="author">
+                — Vilayat
+            </div>
+
+            <div class="card-actions">
+
+                <button onclick="copyCard(this)">
+                    📋 Copy
+                </button>
+
+                <button onclick="shareCard(this)">
+                    📤 Share
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- SAD -->
+
+        <div
+            class="shayari-card"
+            data-category="Sad">
+
+            <div class="category-tag">
+                Sad
+            </div>
+
+            <div class="shayari-text">
+
+                Kuch khamoshiyan bhi
+                bahut kuch keh jaati hain,
+                bas samajhne wala chahiye.
+
+            </div>
+
+            <div class="author">
+                — Vilayat
+            </div>
+
+            <div class="card-actions">
+
+                <button onclick="copyCard(this)">
+                    📋 Copy
+                </button>
+
+                <button onclick="shareCard(this)">
+                    📤 Share
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- FRIENDSHIP -->
+
+        <div
+            class="shayari-card"
+            data-category="Friendship">
+
+            <div class="category-tag">
+                Friendship
+            </div>
+
+            <div class="shayari-text">
+
+                Dost woh nahi jo
+                har waqt paas ho,
+                dost woh hai jo
+                dil ke paas ho.
+
+            </div>
+
+            <div class="author">
+                — Vilayat
+            </div>
+
+            <div class="card-actions">
+
+                <button onclick="copyCard(this)">
+                    📋 Copy
+                </button>
+
+                <button onclick="shareCard(this)">
+                    📤 Share
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- MOTIVATIONAL -->
+
+        <div
+            class="shayari-card"
+            data-category="Motivational">
+
+            <div class="category-tag">
+                Motivational
+            </div>
+
+            <div class="shayari-text">
+
+                Raaste mushkil ho sakte hain,
+                lekin manzil mumkin hai.
+
+            </div>
+
+            <div class="author">
+                — Vilayat
+            </div>
+
+            <div class="card-actions">
+
+                <button onclick="copyCard(this)">
+                    📋 Copy
+                </button>
+
+                <button onclick="shareCard(this)">
+                    📤 Share
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- LIFE -->
+
+        <div
+            class="shayari-card"
+            data-category="Life">
+
+            <div class="category-tag">
+                Life
+            </div>
+
+            <div class="shayari-text">
+
+                Zindagi har roz
+                ek nayi kahani likhti hai,
+                bas panne palat-te raho.
+
+            </div>
+
+            <div class="author">
+                — Vilayat
+            </div>
+
+            <div class="card-actions">
+
+                <button onclick="copyCard(this)">
+                    📋 Copy
+                </button>
+
+                <button onclick="shareCard(this)">
+                    📤 Share
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         CATEGORIES
+    ========================= -->
+
+    <section
+        class="categories-section"
+        id="categories">
+
+        <div class="section-heading">
+
+            <h2>
+                Explore
+            </h2>
+
+            <span>
+                Choose your mood
+            </span>
+
+        </div>
+
+
+        <div class="category-grid">
+
+
+            <div
+                class="category-box"
+                onclick="filterCategory('Love')">
+
+                <div class="category-icon">
+                    💗
+                </div>
+
+                <h3>
+                    Love
+                </h3>
+
+            </div>
+
+
+            <div
+                class="category-box"
+                onclick="filterCategory('Sad')">
+
+                <div class="category-icon">
+                    ☁️
+                </div>
+
+                <h3>
+                    Sad
+                </h3>
+
+            </div>
+
+
+            <div
+                class="category-box"
+                onclick="filterCategory('Friendship')">
+
+                <div class="category-icon">
+                    👥
+                </div>
+
+                <h3>
+                    Friendship
+                </h3>
+
+            </div>
+
+
+            <div
+                class="category-box"
+                onclick="filterCategory('Motivational')">
+
+                <div class="category-icon">
+                    ⭐
+                </div>
+
+                <h3>
+                    Motivational
+                </h3>
+
+            </div>
+
+
+            <div
+                class="category-box"
+                onclick="filterCategory('Life')">
+
+                <div class="category-icon">
+                    🍃
+                </div>
+
+                <h3>
+                    Life
+                </h3>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         QUOTE
+    ========================= -->
+
+    <section class="quote-section">
+
+        <div class="quote-mark">
+            “
+        </div>
+
+        <p>
+            Some feelings cannot be explained...
+            they can only be written.
+        </p>
+
+    </section>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="footer-logo">
+        🪶 Mirza Shayri
+    </div>
+
+    <div>
+        Home &nbsp; • &nbsp;
+        Categories &nbsp; • &nbsp;
+        About
+    </div>
+
+    <div>
+        Made with ❤️ for Shayars
+    </div>
+
+</footer>
+
+
+<!-- =========================
+     UPLOAD POPUP
+========================= -->
+
+<div
+    class="overlay"
+    id="uploadOverlay">
+
+    <div class="upload-box">
+
+        <h2>
+            Upload Your Shayari
+        </h2>
+
+
+        <label>
+            Shayari
+        </label>
+
+        <textarea
+            id="shayariText"
+            placeholder="Write your Shayari..."
+        ></textarea>
+
+
+        <label>
+            Your Name
+        </label>
+
+        <input
+            id="authorName"
+            type="text"
+            placeholder="Your name"
+        >
+
+
+        <label>
+            Category
+        </label>
+
+        <select id="shayariCategory">
+
+            <option value="Love">
+                💗 Love
+            </option>
+
+            <option value="Sad">
+                ☁ Sad
+            </option>
+
+            <option value="Friendship">
+                👥 Friendship
+            </option>
+
+            <option value="Motivational">
+                ⭐ Motivational
+            </option>
+
+            <option value="Life">
+                🍃 Life
+            </option>
+
+        </select>
+
+
+        <div class="upload-actions">
+
+            <button
+                class="publish"
+                onclick="publishShayari()">
+
+                Publish Shayari
+
+            </button>
+
+            <button
+                class="cancel"
+                onclick="closeUpload()">
+
+                Cancel
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div
+    class="toast"
+    id="toast">
+
+</div>
+
+
+<script>
+
+/* =========================
+   USER ID
+========================= */
+
+function getUserID() {
+
+    let id =
+        localStorage.getItem(
+            "mirzaShayriUserID"
+        );
+
+    if (!id) {
+
+        id =
+            "user_" +
+            Date.now() +
+            "_" +
+            Math.random()
+                .toString(36)
+                .substring(2);
+
+        localStorage.setItem(
+            "mirzaShayriUserID",
+            id
+        );
+
+    }
+
+    return id;
+
+}
+
+
+/* =========================
+   TOAST
+========================= */
+
+function showToast(message) {
+
+    let toast =
+        document.getElementById("toast");
+
+    toast.textContent = message;
+
+    toast.classList.add("show");
+
+    setTimeout(function() {
+
+        toast.classList.remove("show");
+
+    }, 2200);
+
+}
+
+
+/* =========================
+   UPLOAD
+========================= */
+
+function openUpload() {
+
+    document.getElementById(
+        "uploadOverlay"
+    ).style.display = "flex";
+
+}
+
+
+function closeUpload() {
+
+    document.getElementById(
+        "uploadOverlay"
+    ).style.display = "none";
+
+}
+
+
+/* =========================
+   PUBLISH
+========================= */
+
+function publishShayari() {
+
+    let text =
+        document.getElementById(
+            "shayariText"
+        ).value.trim();
+
+    let author =
+        document.getElementById(
+            "authorName"
+        ).value.trim();
+
+    let category =
+        document.getElementById(
+            "shayariCategory"
+        ).value;
+
+
+    if (text === "") {
+
+        showToast(
+            "Please write your Shayari."
+        );
+
+        return;
+
+    }
+
+
+    if (author === "") {
+
+        author = "Unknown";
+
+    }
+
+
+    let shayari = {
+
+        id:
+            Date.now() +
+            "_" +
+            Math.random()
+                .toString(36)
+                .substring(2),
+
+        text: text,
+
+        author: author,
+
+        category: category,
+
+        uploader: getUserID()
+
+    };
+
+
+    let saved =
+        JSON.parse(
+            localStorage.getItem(
+                "mirzaShayris"
+            )
+        ) || [];
+
+
+    saved.push(shayari);
+
+
+    localStorage.setItem(
+        "mirzaShayris",
+        JSON.stringify(saved)
+    );
+
+
+    addShayariCard(shayari);
+
+
+    document.getElementById(
+        "shayariText"
+    ).value = "";
+
+    document.getElementById(
+        "authorName"
+    ).value = "";
+
+
+    closeUpload();
+
+    showToast(
+        "Shayari published ❤️"
+    );
+
+}
+
+
+/* =========================
+   ESCAPE HTML
+========================= */
+
+function escapeHTML(text) {
+
+    let div =
+        document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+
+}
+
+
+/* =========================
+   ADD CARD
+========================= */
+
+function addShayariCard(shayari) {
+
+    let container =
+        document.getElementById(
+            "shayariContainer"
+        );
+
+
+    let card =
+        document.createElement("div");
+
+    card.className =
+        "shayari-card";
+
+    card.dataset.category =
+        shayari.category;
+
+    card.dataset.id =
+        shayari.id;
+
+
+    card.innerHTML = `
+
+        <div class="category-tag">
+
+            ${escapeHTML(shayari.category)}
+
+        </div>
+
+
+        <div class="shayari-text">
+
+            ${escapeHTML(shayari.text)}
+
+        </div>
+
+
+        <div class="author">
+
+            — ${escapeHTML(shayari.author)}
+
+        </div>
+
+
+        <div class="card-actions">
+
+            <button onclick="copyCard(this)">
+                📋 Copy
+            </button>
+
+            <button onclick="shareCard(this)">
+                📤 Share
+            </button>
+
+        </div>
+
+    `;
+
+
+    /*
+       ONLY THE UPLOADER
+       GETS DELETE BUTTON
+    */
+
+    if (
+        shayari.uploader === getUserID()
+    ) {
+
+        let deleteButton =
+            document.createElement("button");
+
+        deleteButton.className =
+            "delete-btn";
+
+        deleteButton.textContent =
+            "🗑️ Delete";
+
+        deleteButton.onclick =
+            function() {
+
+                deleteShayari(
+                    shayari.id
+                );
+
+            };
+
+
+        card.querySelector(
+            ".card-actions"
+        ).appendChild(
+            deleteButton
+        );
+
+    }
+
+
+    container.appendChild(card);
+
+}
+
+
+/* =========================
+   LOAD UPLOADS
+========================= */
+
+function loadShayris() {
+
+    let saved =
+        JSON.parse(
+            localStorage.getItem(
+                "mirzaShayris"
+            )
+        ) || [];
+
+
+    saved.forEach(
+        function(shayari) {
+
+            addShayariCard(
+                shayari
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================
+   DELETE
+========================= */
+
+function deleteShayari(id) {
+
+    let saved =
+        JSON.parse(
+            localStorage.getItem(
+                "mirzaShayris"
+            )
+        ) || [];
+
+
+    let item =
+        saved.find(
+            function(shayari) {
+
+                return shayari.id === id;
+
+            }
+        );
+
+
+    if (
+        !item ||
+        item.uploader !== getUserID()
+    ) {
+
+        showToast(
+            "You can delete only your own Shayari."
+        );
+
+        return;
+
+    }
+
+
+    if (
+        !confirm(
+            "Delete this Shayari?"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    saved =
+        saved.filter(
+            function(shayari) {
+
+                return shayari.id !== id;
+
+            }
+        );
+
+
+    localStorage.setItem(
+        "mirzaShayris",
+        JSON.stringify(saved)
+    );
+
+
+    let card =
+        document.querySelector(
+            `[data-id="${id}"]`
+        );
+
+
+    if (card) {
+
+        card.remove();
+
+    }
+
+
+    showToast(
+        "Shayari deleted."
+    );
+
+}
+
+
+/* =========================
+   CATEGORY FILTER
+========================= */
+
+function filterCategory(category) {
+
+    let cards =
+        document.querySelectorAll(
+            ".shayari-card"
+        );
+
+
+    cards.forEach(
+        function(card) {
+
+            if (
+                card.dataset.category ===
+                category
+            ) {
+
+                card.style.display =
+                    "flex";
+
+            } else {
+
+                card.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+
+    document.getElementById(
+        "shayariContainer"
+    ).scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =========================
+   SHOW ALL
+========================= */
+
+function showAll() {
+
+    let cards =
+        document.querySelectorAll(
+            ".shayari-card"
+        );
+
+
+    cards.forEach(
+        function(card) {
+
+            card.style.display =
+                "flex";
+
+        }
+    );
+
+
+    document.getElementById(
+        "searchInput"
+    ).value = "";
+
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+function searchShayari() {
+
+    let query =
+        document.getElementById(
+            "searchInput"
+        ).value
+        .toLowerCase()
+        .trim();
+
+
+    let cards =
+        document.querySelectorAll(
+            ".shayari-card"
+        );
+
+
+    cards.forEach(
+        function(card) {
+
+            let text =
+                card.innerText
+                    .toLowerCase();
+
+
+            if (
+                text.includes(query)
+            ) {
+
+                card.style.display =
+                    "flex";
+
+            } else {
+
+                card.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================
+   COPY
+========================= */
+
+function copyCard(button) {
+
+    let card =
+        button.closest(
+            ".shayari-card"
+        );
+
+
+    let text =
+        card.querySelector(
+            ".shayari-text"
+        ).innerText;
+
+
+    let author =
+        card.querySelector(
+            ".author"
+        ).innerText;
+
+
+    let finalText =
+        text + "\n" + author;
+
+
+    navigator.clipboard.writeText(
+        finalText
+    );
+
+
+    showToast(
+        "Shayari copied! 📋"
+    );
+
+}
+
+
+/* =========================
+   SHARE
+========================= */
+
+function shareCard(button) {
+
+    let card =
+        button.closest(
+            ".shayari-card"
+        );
+
+
+    let text =
+        card.querySelector(
+            ".shayari-text"
+        ).innerText;
+
+
+    let author =
+        card.querySelector(
+            ".author"
+        ).innerText;
+
+
+    if (
+        navigator.share
+    ) {
+
+        navigator.share({
+
+            title: "Mirza Shayri",
+
+            text:
+                text +
+                "\n" +
+                author
+
+        });
+
+    } else {
+
+        navigator.clipboard.writeText(
+            text + "\n" + author
+        );
+
+        showToast(
+            "Shayari copied for sharing! 📤"
+        );
+
+    }
+
+}
+
+
+/* =========================
+   CATEGORIES SCROLL
+========================= */
+
+function scrollCategories() {
+
+    document.getElementById(
+        "categories"
+    ).scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+function showAbout() {
+
+    alert(
+        "Mirza Shayri — A place where every feeling becomes a verse."
+    );
+
+}
+
+
+/* =========================
+   FAVORITES
+========================= */
+
+function showFavorites() {
+
+    showToast(
+        "Favorites feature coming soon ❤️"
+    );
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+loadShayris();
+
+</script>
+
+</body>
+</html>
